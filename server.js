@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { tinyRoute } from './routes/tinyRoute.js';
 
 // creating server
 const tinyApp = new express();
@@ -19,3 +20,6 @@ tinyDB.on('open', ()=> {
 tinyDB.on('error', ()=> {
     console.log('Something went wrong with datbase')
 })
+
+// passing app to the routes
+tinyRoute(tinyApp);
