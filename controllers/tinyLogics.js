@@ -1,4 +1,5 @@
 import tinyModel from "../models/tinyModels.js";
+import { nanoid } from "nanoid";
 
 // Create Short URL function
 export async function shortUrl(req, res) {
@@ -13,7 +14,7 @@ export async function shortUrl(req, res) {
         if (url) return res.status(200).json({ shortUrl: `http://localhost:7000/${url.shortcode}` });
 
         // generate short code
-        const shortCode = shortid.generate();
+        const shortCode = nanoid(7);
         url = new tinyModel({ longUrl, shortCode });
         await url.save();
 
